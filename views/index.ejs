@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Movies forum</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <header>
+    <h1>Movies gallery</h1>
+  </header>
+  <div class ='post'>
+    <div class ='add-new-post'>
+      <a href='/topics/new'>Add new topics</a>
+    </div>
+    <% topics.forEach((each) => { %>
+      <div class = 'each-post'>
+        <div class='each-image'>
+          <!-- <a href = '/topics/<%= each.id %>'> -->
+            <img src='<%= each.url %>' alt= '<%= each.title %>'>
+          <!-- </a> -->
+        </div>
+        <!-- <a href = '/topics/<%= each.id %>' class='title-href'> -->
+          <h2><%= each.title %></h2>
+        <!-- </a> -->
+        <p>Description: <%= each.description %></p>
+        <br>
+        <form action="/topics/<%= topics.id %>" method="GET">
+     <input type="submit" value="Show More Info">
+       </form>
+
+      </div>
+    <% }) %>
+ </div>
+</body>
+</html>

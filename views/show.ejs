@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Comments</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+<header>
+<h1><%=topics.title%></h1>
+</header>
+<section>
+  <div class="topic-container">
+    <img src="<%= topics.url %>" alt="<%= topics.title %>">
+    <p>Description: <%= topics.description %></p><br>
+  </div>
+  <p>Comments: <%= comments.comment %></p>
+  <p>Votings: <%= comments.voting %></p>
+  <form action="/topics/<%= topics.id %>/comments/voting?_method=PUT" method="POST">
+        <input type="submit" value="Voting">
+    </form>
+
+  <form action="/comments/<%= comments.id %>/newcomment" method="GET">
+     <input type="submit" value="New Comment">
+     </form>
+
+
+
+</section>
+
+</body>
+</html>
