@@ -4,28 +4,33 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Comments</title>
+
   <link rel="stylesheet" href="">
 </head>
 <body>
 <header>
 <h1><%=topics.title%></h1>
+<div id="link" data="<%= topics.id %>"></div>
 </header>
 <section>
   <div class="topic-container">
     <img src="<%= topics.url %>" alt="<%= topics.title %>">
     <p>Description: <%= topics.description %></p><br>
   </div>
-  <p>Comments: <%= comments.comment %></p>
-  <p>Votings: <%= comments.voting %></p>
-  <form action="/topics/<%= topics.id %>/comments/voting?_method=PUT" method="POST">
-        <input type="submit" value="Voting">
-    </form>
-
-  <form action="/comments/<%= comments.id %>/newcomment" method="GET">
-     <input type="submit" value="New Comment">
-     </form>
-
-
+  <div class="comment-container">
+    <h1>Comment Area</h1>
+    <% comments.forEach((comment) => { %>
+      <p class='comment-text'>
+        <%= comment.comment %>
+      </p><br>
+      <p class='comment-vote'>
+        <%= comment.voting %>
+      </p><br>
+    <% }) %>
+  </div>
+     <form action="/comments/newcomment" method="GET">
+        <input type="submit" value="Show More Comments">
+      </form>
 
 </section>
 

@@ -1,25 +1,25 @@
-<!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Add New Topic</title>
+  <title>New Topic</title>
   <link rel="stylesheet" href="">
 </head>
 <body>
-  <main>
+<main>
   <header>
-    <h1>Add New Topic</h1>
+    <h1>Add New Comment</h1>
   </header>
   <section>
-    <form action="/topics" method="POST">
+
+    <form action="/topics/new" method="POST">
       <label for="topics[title]">Title:</label><br>
       <input type="text" name="topics[title]"><br>
+      <label for="topics[url]">Picture:</label><br>
+      <input type="text" name="topics[url]"><br>
       <label for="topics[description]">Description:</label><br>
       <input type="text" name="topics[description]"><br>
-      <label for="topics[url]">Topic Url</label><br>
-      <input type="text" name="topics[url]"><br>
-      <input type="submit" value="Add New Comment">
+      <input type="submit" value="Add New Topic">
     </form>
   </section>
 </main>

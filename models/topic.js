@@ -11,18 +11,20 @@ Topic.findAll=()=>{
 Topic.findById=(id)=>{
   return db.one(`
     select * from topics
-    where id=$1`,
-    [id]
-    );
+    where id=$1;`,
+    [id])
+    console.log(id)
+    ;
 };
 
-Topic.findCommentById=(topic_id)=>{
-  return db.none(`
-    select * from comments
-    where topic_id=$1`,
-    [topic_id]
-    );
-};
+// Topic.findCommentById=(id)=>{
+//   console.log('topic_id in models:',id)
+//   return db.none(`
+//     select * from comments
+//     where topic_id=$1`,
+//     [id]
+//     );
+// };
 
 Topic.save=(topic)=>{
   return db.none(`

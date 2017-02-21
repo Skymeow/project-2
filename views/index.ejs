@@ -5,33 +5,42 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Movies forum</title>
   <link rel="stylesheet" href="">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/libraries/materialize/css/materialize.min.css" />
+
 </head>
 <body>
-  <header>
-    <h1>Movies gallery</h1>
-  </header>
-  <div class ='post'>
-    <div class ='add-new-post'>
-      <a href='/topics/new'>Add new topics</a>
-    </div>
-    <% topics.forEach((each) => { %>
-      <div class = 'each-post'>
-        <div class='each-image'>
-          <!-- <a href = '/topics/<%= each.id %>'> -->
-            <img src='<%= each.url %>' alt= '<%= each.title %>'>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="" class="brand-logo">Movies Gallery</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+          <li><a href="/topics/new"><span class="new badge">Add new topics</span></a></li>
+
+        </ul>
+
+      </div>
+    </nav>
+    <div class="post">
+    <% topics.forEach((topic) => { %>
+      <div class = 'topic-post'>
+        <div class='topic-image'>
+          <!-- <a href = '/topics/<%= topic.id %>'> -->
+            <img src='<%= topic.url %>' alt= '<%= topic.title %>'>
           <!-- </a> -->
         </div>
-        <!-- <a href = '/topics/<%= each.id %>' class='title-href'> -->
-          <h2><%= each.title %></h2>
+        <!-- <a href = '/topics/<%= topic.id %>' class='title-href'> -->
+          <h2><%= topic.title %></h2>
         <!-- </a> -->
-        <p>Description: <%= each.description %></p>
+        <p>Description: <%= topic.description %></p>
         <br>
-        <form action="/topics/<%= topics.id %>" method="GET">
-     <input type="submit" value="Show More Info">
-       </form>
+        <%= console.log('inside the ejs', topic.id) %>
+      <form action="/topics/<%= topic.id %>" method="GET">
+        <input type="submit" value="Show More Info">
+      </form>
 
       </div>
     <% }) %>
- </div>
+    </div>
 </body>
 </html>

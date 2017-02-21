@@ -1,6 +1,6 @@
 const pgp = require('pg-promise')();
 
-const localconnection = 'postgres://localhost:5432/moviesgallery';
+const localconnection = process.env.database_url || 'postgres://localhost:5432/moviesgallery';
 
 const db = pgp(localconnection);
 

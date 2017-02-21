@@ -12,8 +12,7 @@
     <h1>Add New Comment</h1>
   </header>
   <section>
-  <h2><%= topics.title %></h2>
-    <form action="/comments/<%= comments.id %>" method="POST">
+    <form action="/topics/<%= topics.id %>" method="POST">
       <label for="comments[comment]">Comment:</label><br>
       <input type="text" name="comments[comment]"><br>
       <input type="submit" value="Add New Comment">
