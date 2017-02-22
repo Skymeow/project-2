@@ -1,0 +1,15 @@
+#add-comment {
+  width: 400px;
+  height: 600px;
+}
+
+#comment-container {
+  display:flex;
+  background-color: rgba(34,250,147,0.3);
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.comment-text {
+  background-color: white;
+}
+

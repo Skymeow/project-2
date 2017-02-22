@@ -10,8 +10,8 @@ CREATE TABLE topics(
 
 CREATE TABLE comments(
  id BIGSERIAL PRIMARY KEY,
- comment VARCHAR(500) NOT NULl,
- voting INTEGER NOT NULL,
+ comment VARCHAR(500),
+ voting INTEGER DEFAULT 0,
  topic_id INTEGER REFERENCES topics(id) NOT NULL
 );
 

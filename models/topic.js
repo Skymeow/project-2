@@ -1,9 +1,17 @@
 const db = require('../config/db');
 const Topic = {};
+// Topic.findAll=()=>{
+//   return db.manyOrNone(`
+//     select * from topics
+//     inner join comments
+//     on topics.id=comments.topic_id
+//     order by voting DESC`);
+// };
+
 Topic.findAll=()=>{
   return db.manyOrNone(`
-    select * from topics
-    inner join comments
+    select topics.id, title, description, url from topics
+    left outer join comments
     on topics.id=comments.topic_id
     order by voting DESC`);
 };
@@ -26,7 +34,7 @@ Topic.findById=(id)=>{
 //     );
 // };
 
-Topic.save=(topic)=>{
+Topic.save=(topics)=>{
   return db.none(`
     insert into topics
     (title,description,url)

@@ -29,26 +29,48 @@ controller.show=(req,res)=>{
   .catch(err=>console.log('error:',err));
 };
 
-controller.updatecomment=(req,res)=>{
-  Topic
-    .findById(req.params.id)
-    .then((topicdata)=>{
-    Comment
-      .update(req.body.comments)
-      .then()=>res.redirect('/topics/topicdata.id')
-      .catch(err=>console.log('error:',err));
+controller.newcomment=(req,res)=>{
+  console.log(req.body, req.params.id);
+  Comment
+  .new(req.body.comments, req.params.id)
+  .then( data => res.redirect(`/topics/${req.params.id}`));
+    // Comment
+    // .new(req.body.comments)
+    // .then((data)=>{
+    //     res.render('show',{
+    //      comments:data
+    //     })
+    //   })
 
-  })
+    //   .catch(err=>console.log('error:',err));
+}
+
+controller.newtopic=(req,res)=>{
+  res.render('new_topic');
+};
+
+controller.vote = (req, res) => {
+  Comment
+    .vote(req.params.id)
+    .then(() => {
+      if (req.query.show) {
+        res.redirect(`/topics/${req.params.id}`)
+      } else {
+        res.redirect('/topics')
+      }
+    })
+    .catch(err => console.log('ERROR:', err));
 }
 
 
-controller.new=(req,res)=>{
-  res.render('./new topic')
-}
 controller.save=(req,res)=>{
+  console.log('savedata',req.body)
   Topic
   .save(req.body.topics)
-  .then(()=>res.redirect('/topics'))
+  .then(()=>{
+
+    res.redirect('/topics/')
+   })
   .catch(err=>console.log('error:',err));
 };
 module.exports = controller;

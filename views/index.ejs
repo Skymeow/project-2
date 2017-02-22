@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Movies forum</title>
-  <link rel="stylesheet" href="">
+  <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="/libraries/materialize/css/materialize.min.css" />
 
@@ -14,33 +14,33 @@
     <div class="nav-wrapper">
       <a href="" class="brand-logo">Movies Gallery</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-
-          <li><a href="/topics/new"><span class="new badge">Add new topics</span></a></li>
-
+          <form id="add-topic" action="/topics/new/" method="GET">
+          <li><button type="submit"><span class="new badge">Add new topics</span></button></li>
+          </form>
         </ul>
-
       </div>
     </nav>
-    <div class="post">
+  <div class="row">
+       <div class="col l3 l8 l12">
+          <div  id="css" class="card">
     <% topics.forEach((topic) => { %>
-      <div class = 'topic-post'>
-        <div class='topic-image'>
-          <!-- <a href = '/topics/<%= topic.id %>'> -->
+        <div class="card-image">
             <img src='<%= topic.url %>' alt= '<%= topic.title %>'>
-          <!-- </a> -->
+            <span class="card-title">Title:<%= topic.title %></span>
         </div>
-        <!-- <a href = '/topics/<%= topic.id %>' class='title-href'> -->
-          <h2><%= topic.title %></h2>
-        <!-- </a> -->
-        <p>Description: <%= topic.description %></p>
-        <br>
-        <%= console.log('inside the ejs', topic.id) %>
-      <form action="/topics/<%= topic.id %>" method="GET">
-        <input type="submit" value="Show More Info">
-      </form>
-
-      </div>
+        <div class="card-content">
+          <p>Description: <%= topic.description %></p>
+          <br>
+          <%= console.log('inside the ejs', topic.id) %>
+        </div>
+        <div class="card-action">
+           <form action="/topics/<%= topic.id %>" method="GET">
+             <input type="submit" value="Show More Info">
+           </form>
+        </div>
     <% }) %>
-    </div>
+        </div>
+     </div>
+  </div>
 </body>
 </html>

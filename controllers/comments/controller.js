@@ -12,18 +12,11 @@ let controller = {};
 //   .catch(err=>console.log('error:',err));
 // };
 
-controller.newcomment=(req,res)=>{
-    res.render('new_comment');
-  }
 
 
 
-controller.update=(req,res)=>{
-  Comment
-  .update(req.body.comments)
-  .then(()=>res.redirect('/topics/req.params.id'))
-  .catch(err=>console.log('error:',err));
-}
+
+
 
 // controller.vote =(req,res)=>{
 //   Comment

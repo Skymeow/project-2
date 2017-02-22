@@ -4,8 +4,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Comments</title>
+  <link rel="stylesheet" href="/voting.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="/libraries/materialize/css/materialize.min.css" />
 
-  <link rel="stylesheet" href="">
 </head>
 <body>
 <header>
@@ -17,21 +19,32 @@
     <img src="<%= topics.url %>" alt="<%= topics.title %>">
     <p>Description: <%= topics.description %></p><br>
   </div>
-  <div class="comment-container">
+  <div id="comment-container">
     <h1>Comment Area</h1>
+    <div class=each-comment>
     <% comments.forEach((comment) => { %>
       <p class='comment-text'>
-        <%= comment.comment %>
+        Comment: <%= comment.comment %>
       </p><br>
+     </div>
+     <div class=each-vote>
       <p class='comment-vote'>
-        <%= comment.voting %>
+        Votes: <%= comment.voting %>
       </p><br>
-    <% }) %>
-  </div>
-     <form action="/comments/newcomment" method="GET">
-        <input type="submit" value="Show More Comments">
+      </div>
+      <div class="vote">
+      <form action="/topics/<%= topics.id %>/vote?_method=PUT&show=true" method="POST">
+        <input type="submit" value="VOTE">
       </form>
-
+    <% }) %>
+      </div>
+      <div class="more-comment">
+    <form id="add-comment" action="/topics/<%= topics.id %>/" method="POST">
+       <textarea class="comment-text" form="add-comment" name="comments[comment]" rows="8" cols="50"></textarea>
+       <input type="submit" value="Add Comment">
+    </form>
+    </div>
+   </div>
 </section>
 
 </body>
